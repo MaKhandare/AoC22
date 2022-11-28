@@ -1,3 +1,4 @@
+package day01;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.BufferedReader;

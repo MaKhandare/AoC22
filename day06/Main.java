@@ -1,4 +1,4 @@
-package day8;
+package day06;
 
 import java.io.IOException;
 import java.util.ArrayList;
