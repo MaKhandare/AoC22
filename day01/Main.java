@@ -29,13 +29,9 @@ public class Main {
 
         Collections.sort(data);
 
-        System.out.println(data.get(data.size()-1));
-        System.out.println(data.get(data.size()-2));
-        System.out.println(data.get(data.size()-3));
+        System.out.println(data.get(data.size() - 1));
 
-        sum = 0;
-        sum = data.get(data.size()-1) + data.get(data.size()-2) + data.get(data.size()-3);
-        System.out.println(sum);
+        System.out.println(data.get(data.size() - 1) + data.get(data.size() - 2) + data.get(data.size() - 3));
 
     }
 }
