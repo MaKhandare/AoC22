@@ -2,6 +2,8 @@ package day03;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import Util.InputHandler;
 
@@ -20,20 +22,17 @@ public class Main {
     }
 
     private static int part1(ArrayList<String> data) {
-        HashSet<Character> s1 = new HashSet<>();
-        HashSet<Character> s2 = new HashSet<>();
+        Set<Character> s1 = new HashSet<>();
+        Set<Character> s2 = new HashSet<>();
         int sum = 0;
+
         for (int i = 0; i < data.size(); i++) {
+
             String str1 = data.get(i).substring(0, data.get(i).length() / 2);
             String str2 = data.get(i).substring(data.get(i).length() / 2);
 
-            for (int j = 0; j < str1.length(); j++) {
-                s1.add(str1.charAt(j));
-            }
-
-            for (int j = 0; j < str2.length(); j++) {
-                s2.add(str2.charAt(j));
-            }
+            s1 = str1.chars().mapToObj(e -> (char) e).collect(Collectors.toSet());
+            s2 = str2.chars().mapToObj(e -> (char) e).collect(Collectors.toSet());
 
             s1.retainAll(s2);
 
@@ -53,26 +52,20 @@ public class Main {
     }
 
     private static int part2(ArrayList<String> data) {
-        HashSet<Character> s1 = new HashSet<>();
-        HashSet<Character> s2 = new HashSet<>();
-        HashSet<Character> s3 = new HashSet<>();
+        Set<Character> s1 = new HashSet<>();
+        Set<Character> s2 = new HashSet<>();
+        Set<Character> s3 = new HashSet<>();
         int sum = 0;
+
         for (int i = 0; i < data.size(); i += 3) {
+
             String str1 = data.get(i);
             String str2 = data.get(i + 1);
             String str3 = data.get(i + 2);
 
-            for (int j = 0; j < str1.length(); j++) {
-                s1.add(str1.charAt(j));
-            }
-
-            for (int j = 0; j < str2.length(); j++) {
-                s2.add(str2.charAt(j));
-            }
-
-            for (int j = 0; j < str3.length(); j++) {
-                s3.add(str3.charAt(j));
-            }
+            s1 = str1.chars().mapToObj(e -> (char) e).collect(Collectors.toSet());
+            s2 = str2.chars().mapToObj(e -> (char) e).collect(Collectors.toSet());
+            s3 = str3.chars().mapToObj(e -> (char) e).collect(Collectors.toSet());
 
             s2.retainAll(s3);
             s1.retainAll(s2);
