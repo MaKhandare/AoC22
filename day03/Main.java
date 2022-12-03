@@ -1,13 +1,12 @@
 package day03;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import Util.InputHandler;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         InputHandler inputHandler = new InputHandler(".\\day03\\data.txt");
         ArrayList<String> data = inputHandler.getData();
