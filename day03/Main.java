@@ -9,7 +9,6 @@ import Util.InputHandler;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        // maybe also possible with sets instead of char comparisons?
         InputHandler inputHandler = new InputHandler(".\\day03\\data.txt");
         ArrayList<String> data = inputHandler.getData();
 
