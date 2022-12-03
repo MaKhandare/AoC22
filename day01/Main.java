@@ -29,9 +29,9 @@ public class Main {
 
         Collections.sort(data);
 
-        System.out.println(data.get(data.size() - 1));
+        System.out.println("Part 1: " + data.get(data.size() - 1));
 
-        System.out.println(data.get(data.size() - 1) + data.get(data.size() - 2) + data.get(data.size() - 3));
+        System.out.println("Part 2: " + (data.get(data.size() - 1) + data.get(data.size() - 2) + data.get(data.size() - 3)));
 
     }
 }

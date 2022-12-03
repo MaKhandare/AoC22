@@ -24,8 +24,8 @@ public class Main {
             }
         }
 
-        System.out.println(score);
-        System.out.println(score2);
+        System.out.println("Part 1: " + score);
+        System.out.println("Part 2: " + score2);
 
     }
 

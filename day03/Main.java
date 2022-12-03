@@ -8,6 +8,8 @@ import java.io.FileReader;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        // maybe also possible with sets instead of char comparisons?
+
         ArrayList<String> data = new ArrayList<>();
 
         String fileName = ".\\day03\\data.txt";
