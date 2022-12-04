@@ -18,24 +18,19 @@ public class Main {
 
     }
 
-    private static int part2(ArrayList<String> data) {
+    
+    private static int part1(ArrayList<String> data) {
         int counter = 0;
         for (int i = 0; i < data.size(); i++) {
 
-            String arr[] = data.get(i).split(",");
-            String first = arr[0];
-            String second = arr[1];
+            int firstStart = Integer.parseInt(data.get(i).split(",")[0].split("-")[0]);
+            int firstEnd = Integer.parseInt(data.get(i).split(",")[0].split("-")[1]);
 
-            String arr2[] = first.split("-");
-            int firstStart = Integer.parseInt(arr2[0]);
-            int firstEnd = Integer.parseInt(arr2[1]);
+            int secondStart = Integer.parseInt(data.get(i).split(",")[1].split("-")[0]);
+            int secondEnd = Integer.parseInt(data.get(i).split(",")[1].split("-")[1]);
 
-            String arr3[] = second.split("-");
-            int secondStart = Integer.parseInt(arr3[0]);
-            int secondEnd = Integer.parseInt(arr3[1]);
-
-            if ((firstStart <= secondStart && secondStart <= firstEnd)
-                    || (secondStart <= firstStart && firstStart <= secondEnd)) {
+            if ((firstStart <= secondStart && secondEnd <= firstEnd) || 
+                (secondStart <= firstStart && firstEnd <= secondEnd)) {
                 counter++;
             }
 
@@ -43,24 +38,18 @@ public class Main {
         return counter;
     }
 
-    private static int part1(ArrayList<String> data) {
+    private static int part2(ArrayList<String> data) {
         int counter = 0;
         for (int i = 0; i < data.size(); i++) {
 
-            String arr[] = data.get(i).split(",");
-            String first = arr[0];
-            String second = arr[1];
+            int firstStart = Integer.parseInt(data.get(i).split(",")[0].split("-")[0]);
+            int firstEnd = Integer.parseInt(data.get(i).split(",")[0].split("-")[1]);
 
-            String arr2[] = first.split("-");
-            int firstStart = Integer.parseInt(arr2[0]);
-            int firstEnd = Integer.parseInt(arr2[1]);
+            int secondStart = Integer.parseInt(data.get(i).split(",")[1].split("-")[0]);
+            int secondEnd = Integer.parseInt(data.get(i).split(",")[1].split("-")[1]);
 
-            String arr3[] = second.split("-");
-            int secondStart = Integer.parseInt(arr3[0]);
-            int secondEnd = Integer.parseInt(arr3[1]);
-
-            if ((firstStart <= secondStart && firstEnd >= secondEnd)
-                    || (secondStart <= firstStart && secondEnd >= firstEnd)) {
+            if ((firstStart <= secondStart && secondStart <= firstEnd) ||
+                (secondStart <= firstStart && firstStart <= secondEnd)) {
                 counter++;
             }
 
