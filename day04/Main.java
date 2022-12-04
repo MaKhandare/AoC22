@@ -1,24 +1,71 @@
 package day04;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
+
+import Util.InputHandler;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        ArrayList<Integer> data = new ArrayList<>();
+        InputHandler input = new InputHandler(".\\day04\\data.txt");
+        ArrayList<String> data = input.getData();
 
-        String fileName = "c:\\dev\\AoC22\\day1\\data.txt";
-        FileReader fileReader = new FileReader(fileName);
+        int counter = part1(data);
+        int counter2 = part2(data);
 
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                data.add(Integer.parseInt(line));
-            }
-        }
+        System.out.println("Part 1: " + counter);
+        System.out.println("Part 2: " + counter2);
 
     }
+
+    private static int part2(ArrayList<String> data) {
+        int counter = 0;
+        for (int i = 0; i < data.size(); i++) {
+
+            String arr[] = data.get(i).split(",");
+            String first = arr[0];
+            String second = arr[1];
+
+            String arr2[] = first.split("-");
+            int firstStart = Integer.parseInt(arr2[0]);
+            int firstEnd = Integer.parseInt(arr2[1]);
+
+            String arr3[] = second.split("-");
+            int secondStart = Integer.parseInt(arr3[0]);
+            int secondEnd = Integer.parseInt(arr3[1]);
+
+            if ((firstStart <= secondStart && secondStart <= firstEnd)
+                    || (secondStart <= firstStart && firstStart <= secondEnd)) {
+                counter++;
+            }
+
+        }
+        return counter;
+    }
+
+    private static int part1(ArrayList<String> data) {
+        int counter = 0;
+        for (int i = 0; i < data.size(); i++) {
+
+            String arr[] = data.get(i).split(",");
+            String first = arr[0];
+            String second = arr[1];
+
+            String arr2[] = first.split("-");
+            int firstStart = Integer.parseInt(arr2[0]);
+            int firstEnd = Integer.parseInt(arr2[1]);
+
+            String arr3[] = second.split("-");
+            int secondStart = Integer.parseInt(arr3[0]);
+            int secondEnd = Integer.parseInt(arr3[1]);
+
+            if ((firstStart <= secondStart && firstEnd >= secondEnd)
+                    || (secondStart <= firstStart && secondEnd >= firstEnd)) {
+                counter++;
+            }
+
+        }
+        return counter;
+    }
+
 }
