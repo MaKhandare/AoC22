@@ -16,7 +16,7 @@ public class Main {
                 "BWFTN", "BLDQFHVN", "HPFR", "ZSMBLNPH"
         };
 
-        Stack[] stackArray = generateStack(stacks);
+        Stack<Character>[] stackArray = generateStack(stacks);
 
         String result1 = part1(data, stackArray);
         stackArray = generateStack(stacks);
@@ -27,7 +27,7 @@ public class Main {
 
     }
 
-    private static String part1(ArrayList<String> data, Stack[] stack) {
+    private static String part1(ArrayList<String> data, Stack<Character>[] stack) {
         String result = "";
         for (int i = 0; i < data.size(); i++) {
             int amount = Integer.parseInt(data.get(i).split(" ")[1]);
@@ -45,19 +45,20 @@ public class Main {
         return result;
     }
 
-    private static String part2(ArrayList<String> data, Stack[] stackArray) {
+    private static String part2(ArrayList<String> data, Stack<Character>[] stackArray) {
         String result = "";
         for (int i = 0; i < data.size(); i++) {
             int amount = Integer.parseInt(data.get(i).split(" ")[1]);
             int src = Integer.parseInt(data.get(i).split(" ")[3]);
             int dest = Integer.parseInt(data.get(i).split(" ")[5]);
-            ArrayList toAdd = new ArrayList<>();
+
+            ArrayList<Character> toAdd = new ArrayList<>();
             for (int j = 0; j < amount; j++) {
                 toAdd.add(stackArray[src - 1].pop());
             }
 
             Collections.reverse(toAdd);
-            for (Object el : toAdd) {
+            for (Character el : toAdd) {
                 stackArray[dest - 1].push(el);
             }
         }
@@ -69,10 +70,10 @@ public class Main {
         return result;
     }
 
-    private static Stack[] generateStack(String[] stacks) {
-        Stack[] stackArray = new Stack[9];
-        for (int i = 0; i < 9; i++) {
-            stackArray[i] = new Stack();
+    private static Stack<Character>[] generateStack(String[] stacks) {
+        Stack<Character>[] stackArray = new Stack[stacks.length];
+        for (int i = 0; i < stacks.length; i++) {
+            stackArray[i] = new Stack<Character>();
             for (int j = 0; j < stacks[i].length(); j++) {
                 stackArray[i].push(stacks[i].charAt(j));
             }
