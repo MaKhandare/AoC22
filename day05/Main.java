@@ -13,22 +13,20 @@ public class Main {
         ArrayList<String> data = inputHandler.getData();
 
         String[] stacks = { "DHNQTWVB", "DWB", "TSQWJC", "FJRNZTP", "GPVJMST",
-                "BWFTN", "BLDQFHVN", "HPFR", "ZSMBLNPH"
+                            "BWFTN", "BLDQFHVN", "HPFR", "ZSMBLNPH"
         };
 
-        Stack<Character>[] stackArray = generateStack(stacks);
+        Stack<Character>[] p1Stack = generateStacks(stacks);
+        Stack<Character>[] p2Stack = generateStacks(stacks);
 
-        String result1 = part1(data, stackArray);
-        stackArray = generateStack(stacks);
-        String result2 = part2(data, stackArray);
-
-        System.out.println(result1);
-        System.out.println(result2);
+        System.out.println("Part 1: " + part1(data, p1Stack));
+        System.out.println("Part 2: " + part2(data, p2Stack));
 
     }
 
     private static String part1(ArrayList<String> data, Stack<Character>[] stack) {
         String result = "";
+
         for (int i = 0; i < data.size(); i++) {
             int amount = Integer.parseInt(data.get(i).split(" ")[1]);
             int src = Integer.parseInt(data.get(i).split(" ")[3]);
@@ -47,6 +45,7 @@ public class Main {
 
     private static String part2(ArrayList<String> data, Stack<Character>[] stackArray) {
         String result = "";
+        
         for (int i = 0; i < data.size(); i++) {
             int amount = Integer.parseInt(data.get(i).split(" ")[1]);
             int src = Integer.parseInt(data.get(i).split(" ")[3]);
@@ -58,19 +57,19 @@ public class Main {
             }
 
             Collections.reverse(toAdd);
-            for (Character el : toAdd) {
-                stackArray[dest - 1].push(el);
+            for (Character c : toAdd) {
+                stackArray[dest - 1].push(c);
             }
         }
 
-        result = "";
         for (int i = 0; i < stackArray.length; i++) {
             result += stackArray[i].pop();
         }
         return result;
     }
 
-    private static Stack<Character>[] generateStack(String[] stacks) {
+    @SuppressWarnings("unchecked")
+    private static Stack<Character>[] generateStacks(String[] stacks) {
         Stack<Character>[] stackArray = new Stack[stacks.length];
         for (int i = 0; i < stacks.length; i++) {
             stackArray[i] = new Stack<Character>();
