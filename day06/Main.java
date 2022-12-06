@@ -1,24 +1,46 @@
 package day06;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.util.HashSet;
+import java.util.Set;
+
+import Util.InputHandler;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        ArrayList<Integer> data = new ArrayList<>();
+        InputHandler inputHandler = new InputHandler(".\\day06\\data.txt");
+        ArrayList<String> data = inputHandler.getData();
 
-        String fileName = "c:\\dev\\AoC22\\day1\\data.txt";
-        FileReader fileReader = new FileReader(fileName);
+        System.out.println("Part 1: " + part1(data));
+        System.out.println("Part 2: " + part2(data));
 
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                data.add(Integer.parseInt(line));
-            }
+    }
+
+    private static int part1(ArrayList<String> data) {
+
+        for (int i = 0; i < data.get(0).length(); i++) {
+
+            Set<Character> s1 = new HashSet<>();
+            for (int j = 0; j < 4; j++) s1.add(data.get(0).charAt(i + j));
+            
+            if (s1.size() == 4) return i + 4;
         }
 
+        return -1;
+    }
+
+    private static int part2(ArrayList<String> data) {
+
+        for (int i = 0; i < data.get(0).length(); i++) {
+            
+            Set<Character> s1 = new HashSet<>();
+            for (int j = 0; j < 14; j++) s1.add(data.get(0).charAt(i + j));
+
+            if (s1.size() == 14) return i + 14;
+            
+        }
+
+        return -1;
     }
 }
